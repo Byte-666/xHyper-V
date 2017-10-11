@@ -242,7 +242,7 @@ function Set-TargetResource
                 $switch | Remove-VMSwitch -Force
                 $parameters = @{}
                 $parameters["Name"] = $Name
-                $parameters["NetAdapterName"] = $NetAdapterName
+                $parameters["NetAdapterName"] = [string]$NetAdapterName[0]
 
                 if ($BandwidthReservationMode -ne "NA")
                 {
@@ -297,7 +297,7 @@ function Set-TargetResource
 
             if ($NetAdapterName)
             {
-                $parameters["NetAdapterName"] = $NetAdapterName
+                $parameters["NetAdapterName"] = [string]$NetAdapterName[0]
                 if ($PSBoundParameters.ContainsKey("AllowManagementOS"))
                 {
                     $parameters["AllowManagementOS"] = $AllowManagementOS
